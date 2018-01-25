@@ -3,14 +3,12 @@ card_number = "4929735477250543"
 valid = false
 
 # Your Luhn Algorithm Here
-def LuhnCheck(card_number)
-  card_sum = 0
-  card_length = card_number.length
+def LuhnCheck ( card_number )
   card_number = card_number.split("")
   card_number = card_number.reverse
   card_number = card_number.map(&:to_i)
-  card_number = card_number.map { |digit|
-    if digit.even?
+  card_number = card_number.map.with_index { |digit, index|
+    if index.odd?
       digit = digit*2
     else
       digit = digit
